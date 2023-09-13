@@ -21,7 +21,9 @@ func main() {
 
 	router := chi.NewRouter()
 
-	router.Use(cors.Handler())
+	router.Use(cors.Handler(cors.Options{
+		// TODO: add options
+	}))
 
 	srv := &http.Server{
 		Handler: router,
