@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/go-chi/chi"
 	"github.com/joho/godotenv"
 )
 
@@ -21,4 +22,7 @@ func main() {
 	}
 
 	fmt.Println("The port ist: ", port)
+
+	router := chi.NewRouter()
+
 }
