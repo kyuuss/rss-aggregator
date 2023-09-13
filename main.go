@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/go-chi/chi"
+	"github.com/go-chi/cors"
 	"github.com/joho/godotenv"
 )
 
@@ -19,6 +20,8 @@ func main() {
 	}
 
 	router := chi.NewRouter()
+
+	router.Use(cors.Handler())
 
 	srv := &http.Server{
 		Handler: router,
