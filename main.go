@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"log"
+	"net/http"
 	"os"
 
 	"github.com/go-chi/chi"
@@ -10,10 +10,7 @@ import (
 )
 
 func main() {
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	godotenv.Load(".env")
 
 	port := os.Getenv("PORT")
 
@@ -21,8 +18,18 @@ func main() {
 		log.Fatal("PORT must be set")
 	}
 
-	fmt.Println("The port ist: ", port)
-
 	router := chi.NewRouter()
+
+	srv := &http.Server{
+		Handler: router,
+		Addr:    ":" + port,
+	}
+
+	log.Printf("Server started on port %s", port)
+
+	err := srv.ListenAndServe()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 }
