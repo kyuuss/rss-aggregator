@@ -10,6 +10,7 @@ func respondWithError(writer http.ResponseWriter, code int, message string) {
 	if code >= 500 {
 		log.Println("Responding with Error:", message)
 	}
+
 	type errorResonse struct {
 		Error string `json:"error"`
 	}
