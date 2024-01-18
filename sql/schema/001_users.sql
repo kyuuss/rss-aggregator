@@ -1,9 +1,10 @@
--- + goose Up
-CREATE TABEL users (
-    id UUID PRIMARY KEY,
-    created_at TIMESPTAMP NOT NULL,
-    updated_at TIMESPTAMP NOT NULL,
-    name TEXT NOT NULL
+-- +goose Up
+CREATE TABLE users (
+    id UUID NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL,
+    name TEXT NOT NULL,
+    PRIMARY KEY(id)
 );
 
 -- +goose Down
