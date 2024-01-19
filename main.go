@@ -56,6 +56,7 @@ func main() {
 	v1_router := chi.NewRouter()
 	v1_router.Get("/health", handlerHealth)
 	v1_router.Get("/error", handlerError)
+	v1_router.Post("/users", api_config.handlerCreateUser)
 
 	router.Mount("/v1", v1_router)
 
