@@ -14,7 +14,7 @@ import (
 	_ "github.com/lib/pq"
 )
 
-type apiCOnfig struct {
+type apiConfig struct {
 	DB *database.Queries
 }
 
@@ -36,6 +36,11 @@ func main() {
 	connection, err := sql.Open("postgres", db_url)
 	if err != nil {
 		log.Fatal("Can not connect to database")
+	}
+
+	queries := database.New(connection)
+	api_config := apiConfig{
+		DB: queries,
 	}
 
 	router := chi.NewRouter()
