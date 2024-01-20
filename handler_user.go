@@ -14,9 +14,11 @@ func (apiConfig *apiConfig) handlerCreateUser(w http.ResponseWriter, request *ht
 	type parametes struct {
 		Name string `json:"name"`
 	}
+
 	decoder := json.NewDecoder(request.Body)
 
 	params := parametes{}
+
 	err := decoder.Decode(&params)
 	if err != nil {
 		respondWithError(w, 400, fmt.Sprintf("Error parsing JSON: %s", err))
