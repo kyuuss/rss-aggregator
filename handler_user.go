@@ -37,3 +37,7 @@ func (apiConfig *apiConfig) handlerCreateUser(w http.ResponseWriter, request *ht
 
 	respondWithJSON(w, 200, databaseUsertoUserDTO(user))
 }
+
+func (apiConfig *apiConfig) handlerGetUser(w http.ResponseWriter, request *http.Request) {
+
+}
